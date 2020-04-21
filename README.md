@@ -1,6 +1,7 @@
 # Situarse en el directorio dónde se hayan descargado los ficheros de este proyecto y ejecutar en este orden: 
 
 docker-compose build
+
 docker-compose up -d
 
 # Acceder al contenedor "zabbix-server" con una terminal bash:
@@ -31,7 +32,7 @@ mysql -h db -uzabbix -pzabbix zabbix < /etc/zabbix/images.sql
 
 mysql -h db -uzabbix -pzabbix zabbix < /etc/zabbix/data.sql
 
-#Abrir un navegador y poner en la URL la IP / Nombre DNS de la máquina anfitrión y acceder a zabbix con las credenciales por defecto:
+# Abrir un navegador y poner en la URL la IP / Nombre DNS de la máquina anfitrión y acceder a zabbix con las credenciales por defecto:
 
 P.ej: http://192.168.0.24/zabbix
 
