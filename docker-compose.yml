@@ -1,1 +1,39 @@
+version: '3'
 
+services:
+   db:
+      container_name: zabbix-sql
+      image: mariadb:latest
+      volumes:
+        - zabbix-database:/var/lib/mysql
+      environment:
+          MYSQL_ROOT_PASSWORD: 123456789
+          MYSQL_USER: zabbix
+          MYSQL_PASSWORD: zabbix
+      ports:
+        - '3306:3306'
+      networks:
+        - zabbix-net
+   zabbix:
+      container_name: zabbix-server
+      depends_on:
+        - db
+      image: zabbix-node
+      build: .
+      volumes:
+        - zabbix-usr:/usr/share/zabbix
+        - zabbix-etc:/etc/zabbix
+        - httpd:/etc/httpd/conf.d/
+      ports:
+        - '80:80'
+      networks:
+        - zabbix-net
+   
+networks:
+   zabbix-net:
+
+volumes:
+   zabbix-database:
+   zabbix-usr:
+   zabbix-etc:
+   httpd:
