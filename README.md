@@ -12,6 +12,8 @@ docker exec -ti zabbix-server bash
 
 mysql -h db -u root -p
 
+NOTA: la contraseña está definida en el fichero docker-compose.yml (123456789)
+
 mysql> create database zabbix character set utf8 collate utf8_bin;
 
 mysql> grant all privileges on zabbix.* to zabbix@localhost identified by 'zabbix';
