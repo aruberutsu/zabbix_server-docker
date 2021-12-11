@@ -1,9 +1,10 @@
 FROM centos:8
 
-ENV REPO 'https://repo.zabbix.com/zabbix/5.5/rhel/8/x86_64/zabbix-release-5.5-1.el7.noarch.rpm'
+ENV REPO 'https://repo.zabbix.com/zabbix/5.5/rhel/8/x86_64/zabbix-release-5.5-1.el8.noarch.rpm'
 
 RUN yum -y install $REPO
-RUN yum -y install mysql zabbix-get zabbix-server-mysql zabbix-web-mysql zabbix-agent
+RUN yum -y install mysql zabbix-get zabbix-server-mysql zabbix-web-mysql zabbix-agent httpd glibc-locale-source glibc-langpack-en
+RUN mkdir /run/php-fpm
 
 EXPOSE 80 443
 
