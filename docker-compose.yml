@@ -10,8 +10,6 @@ services:
           MYSQL_ROOT_PASSWORD: 123456789
           MYSQL_USER: zabbix
           MYSQL_PASSWORD: zabbix
-      ports:
-        - '3306:3306'
       networks:
         - zabbix-net
    zabbix:
