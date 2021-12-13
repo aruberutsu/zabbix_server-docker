@@ -1,11 +1,14 @@
-FROM centos:8
+FROM almalinux:8-minimal
 
 ENV REPO 'https://repo.zabbix.com/zabbix/5.5/rhel/8/x86_64/zabbix-release-5.5-1.el8.noarch.rpm'
 
-RUN dnf -y install $REPO && \
-    dnf -y install mysql zabbix-get zabbix-server-mysql zabbix-web-mysql zabbix-agent httpd glibc-locale-source glibc-langpack-en && \
+RUN microdnf -y install curl && \
+    curl -L --remote-name-all $REPO && \
+    rpm -ivh /zabbix*rpm && \
+    rm /zabbix*rpm && \
+    microdnf -y install mysql zabbix-get zabbix-server-mysql zabbix-web-mysql zabbix-agent httpd glibc-locale-source glibc-langpack-en && \
     mkdir /run/php-fpm && \
-    dnf clean all
+    microdnf clean all
 
 EXPOSE 80 443
 
