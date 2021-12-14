@@ -2,7 +2,11 @@
 
 if test ! -e /.firstrun ; then
   echo "Executing initial setup..."
-  sleep 30
+  until nc -vzw1 zabbix-sql 3306 ; do
+      echo "Waiting for mysql to become available..."
+      sleep 1
+  done
+  sleep 3
   echo create database zabbix character set utf8 collate utf8_bin | mysql -h zabbix-sql -u root -p123456789
   echo grant all privileges on zabbix.* to zabbix identified by \'zabbix\' | mysql -h zabbix-sql -uroot -p123456789
   echo flush privileges | mysql -h zabbix-sql -u root -p123456789
