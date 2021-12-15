@@ -19,5 +19,6 @@ COPY ./sql/data.sql /etc/zabbix/data.sql
 COPY ./config/zabbix.conf /etc/httpd/conf.d/zabbix.conf
 COPY ./config/zabbix_server.conf /etc/zabbix/zabbix_server.conf
 COPY ./config/zabbix.conf.php /etc/zabbix/web/zabbix.conf.php
+COPY ./config/zabbixredir.conf /etc/httpd/conf.d/
 
 CMD /start.sh
