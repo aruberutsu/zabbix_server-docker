@@ -10,7 +10,7 @@ RUN microdnf -y install curl && \
     mkdir /run/php-fpm && \
     microdnf clean all
 
-EXPOSE 80 443
+EXPOSE 80 10050 10051
 
 COPY ./bin/start.sh /start.sh
 COPY ./sql/schema.sql /etc/zabbix/schema.sql

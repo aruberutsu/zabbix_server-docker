@@ -24,6 +24,8 @@ services:
         - httpd:/etc/httpd/conf.d/
       ports:
         - '80:80'
+        - '10050:10050'
+        - '10051:10051'
       networks:
         - zabbix-net
    
