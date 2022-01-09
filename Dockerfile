@@ -1,4 +1,4 @@
-FROM centos:8
+FROM quay.io/centos/centos:stream8
 
 ENV REPO 'https://repo.zabbix.com/zabbix/5.5/rhel/8/x86_64/zabbix-release-5.5-1.el8.noarch.rpm'
 
